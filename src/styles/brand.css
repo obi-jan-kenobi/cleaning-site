@@ -1,0 +1,28 @@
+@theme {
+  --color-primary: hsl(207 86% 60%);
+  --color-primary-hover: hsl(207 86% 55%);
+  
+  --color-background-light: hsl(220 14% 96%);
+  --color-background-dark: hsl(213 47% 10%);
+  --color-surface-light: hsl(0 0% 100%);
+  --color-surface-dark: hsl(212 33% 15%);
+  
+  --color-text-main-light: hsl(220 22% 10%);
+  --color-text-main-dark: hsl(220 14% 96%);
+  --color-text-sub-light: hsl(212 23% 46%);
+  --color-text-sub-dark: hsl(212 14% 66%);
+  
+  --color-brand: hsl(207 86% 60%);
+  --color-brand-hover: hsl(207 86% 55%);
+  --color-brand-fg: hsl(0 0% 100%);
+  
+  --color-accent: hsl(50 100% 50%);
+  --color-accent-600: hsl(47 100% 50%);
+  --color-accent-fg: hsl(222 47% 11%);
+
+  --color-hero-from: hsl(210 100% 96%);
+  --color-hero-to: hsl(0 0% 100%);
+  
+  --color-surface: hsl(210 20% 98%);
+  --color-surface-fg: hsl(222 47% 11%);
+}

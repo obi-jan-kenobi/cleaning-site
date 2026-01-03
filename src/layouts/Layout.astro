@@ -1,0 +1,172 @@
+---
+import { Copyright, Phone, Mail } from '@lucide/astro';
+import "../styles/global.css";
+import Logo from "../images/logo.svg";
+
+interface Props {
+  title: string;
+  description: string;
+  jsonLd?: object;
+  showHomeNav?: boolean;
+}
+
+const { title, description, jsonLd, showHomeNav = false } = Astro.props;
+
+const BRAND = {
+  name: "EMSIG Gebäudedienste GmbH",
+  tagline: "Schleswig-Holsteins gründlicher Reinigungsservice",
+  phone: "+49 4621 830245",
+  email: "info@emsig-gd.de",
+  area: "Schleswig-Holstein",
+  address: "Husumer Baum 36, 24837 Schleswig",
+  legal: { impressum: "/impressum", datenschutz: "/datenschutz" },
+};
+---
+
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/og-cover.jpg" />
+    <meta name="theme-color" content="#4299f0" />
+    <link rel="icon" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet" />
+    {jsonLd && (
+      <script type="application/ld+json">
+        {JSON.stringify(jsonLd)}
+      </script>
+    )}
+  </head>
+  <body class="min-h-screen bg-background-light text-text-main-light overflow-x-hidden transition-colors duration-200">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 w-full bg-surface-light/95 backdrop-blur border-b border-gray-200">
+      <div class="px-4 md:px-10 py-3 max-w-[1280px] mx-auto flex items-center justify-between">
+        <a href="/" class="flex items-center gap-3 text-primary">
+          <div class="size-10 flex items-center justify-center rounded-lg bg-primary/10">
+            <Logo class="h-6 w-6 text-primary" />
+          </div>
+          <span class="text-text-main-light text-xl font-bold leading-tight tracking-tight">{BRAND.name}</span>
+        </a>
+        
+        {showHomeNav ? (
+          <div class="hidden md:flex flex-1 justify-end gap-8 items-center">
+            <nav class="flex items-center gap-9">
+              <a class="text-text-main-light text-sm font-medium hover:text-primary transition-colors" href="#">Start</a>
+              <a class="text-text-main-light text-sm font-medium hover:text-primary transition-colors" href="#services">Services</a>
+              <a class="text-text-main-light text-sm font-medium hover:text-primary transition-colors" href="#about">Über uns</a>
+              <a class="text-text-main-light text-sm font-medium hover:text-primary transition-colors" href="#reviews">Bewertungen</a>
+              <a class="text-text-main-light text-sm font-medium hover:text-primary transition-colors" href="#contact">Kontakt</a>
+            </nav>
+            <a href="#contact">
+              <button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary hover:bg-primary-hover transition-all text-white text-sm font-bold leading-normal tracking-wide">
+                <span class="truncate">Angebot anfragen</span>
+              </button>
+            </a>
+          </div>
+        ) : (
+          <div class="hidden md:flex flex-1 justify-end gap-8 items-center">
+            <nav class="flex items-center gap-9">
+              <a class="text-text-main-light text-sm font-medium hover:text-primary transition-colors" href="/">Startseite</a>
+              <a class="text-text-main-light text-sm font-medium hover:text-primary transition-colors" href="/#services">Services</a>
+              <a class="text-text-main-light text-sm font-medium hover:text-primary transition-colors" href="/#contact">Kontakt</a>
+            </nav>
+          </div>
+        )}
+        
+        <button class="md:hidden p-2 text-text-main-light">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+      </div>
+    </header>
+
+    <slot />
+
+    <!-- Footer -->
+    <footer class="bg-surface-light border-t border-gray-200 pt-16 pb-8">
+      <div class="max-w-[1280px] mx-auto px-4 md:px-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+          <!-- Brand -->
+          <div class="flex flex-col gap-4">
+            <a href="/" class="flex items-center gap-2 text-primary">
+              <div class="size-6 flex items-center justify-center rounded bg-primary/10">
+                <Logo class="h-4 w-4 text-primary" />
+              </div>
+              <span class="text-text-main-light text-lg font-bold">{BRAND.name}</span>
+            </a>
+            <p class="text-text-sub-light text-sm">Sauberkeit, auf die Sie sich verlassen können – in {BRAND.area} und Umgebung.</p>
+            <div class="flex gap-4 mt-2">
+              <a class="text-text-sub-light hover:text-primary transition-colors" href={`mailto:${BRAND.email}`}>
+                <span class="material-symbols-outlined text-[20px]">mail</span>
+              </a>
+              <a class="text-text-sub-light hover:text-primary transition-colors" href={`tel:${BRAND.phone.replace(/\s/g,"")}`}>
+                <span class="material-symbols-outlined text-[20px]">call</span>
+              </a>
+            </div>
+          </div>
+          
+          <!-- Company -->
+          <div>
+            <h3 class="text-text-main-light font-bold mb-4">Unternehmen</h3>
+            <ul class="flex flex-col gap-2 text-sm text-text-sub-light">
+              <li><a class="hover:text-primary transition-colors" href="#about">Über uns</a></li>
+              <li><a class="hover:text-primary transition-colors" href="#contact">Kontakt</a></li>
+              <li><a class="hover:text-primary transition-colors" href={BRAND.legal.impressum}>Impressum</a></li>
+              <li><a class="hover:text-primary transition-colors" href={BRAND.legal.datenschutz}>Datenschutz</a></li>
+            </ul>
+          </div>
+          
+          <!-- Services -->
+          <div>
+            <h3 class="text-text-main-light font-bold mb-4">Services</h3>
+            <ul class="flex flex-col gap-2 text-sm text-text-sub-light">
+              <li><a class="hover:text-primary transition-colors" href="#services">Unterhaltsreinigung</a></li>
+              <li><a class="hover:text-primary transition-colors" href="#services">Büroreinigung</a></li>
+              <li><a class="hover:text-primary transition-colors" href="#services">Glasreinigung</a></li>
+              <li><a class="hover:text-primary transition-colors" href="#services">Baureinigung</a></li>
+            </ul>
+          </div>
+          
+          <!-- Contact -->
+          <div>
+            <h3 class="text-text-main-light font-bold mb-4">Kontakt</h3>
+            <div class="flex flex-col gap-3 text-sm text-text-sub-light">
+              <div class="flex items-center gap-2">
+                <Phone class="h-4 w-4" />
+                <a class="hover:text-primary transition-colors" href={`tel:${BRAND.phone.replace(/\s/g,"")}`}>{BRAND.phone}</a>
+              </div>
+              <div class="flex items-center gap-2">
+                <Mail class="h-4 w-4" />
+                <a class="hover:text-primary transition-colors" href={`mailto:${BRAND.email}`}>{BRAND.email}</a>
+              </div>
+              <p class="text-xs mt-2">{BRAND.address}</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p class="text-text-sub-light text-sm text-center md:text-left">
+            © {new Date().getFullYear()} {BRAND.name}. Alle Rechte vorbehalten.
+          </p>
+          <div class="flex gap-6 text-sm font-medium text-text-sub-light">
+            <a class="hover:text-primary" href={BRAND.legal.impressum}>Impressum</a>
+            <a class="hover:text-primary" href={BRAND.legal.datenschutz}>Datenschutz</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    <!-- Floating Contact Button -->
+    <div class="fixed bottom-6 right-6 z-40">
+      <a href="#contact" class="w-14 h-14 rounded-full bg-primary text-white shadow-lg hover:scale-110 transition-transform flex items-center justify-center">
+        <span class="material-symbols-outlined text-[28px]">chat</span>
+      </a>
+    </div>
+  </body>
+</html>

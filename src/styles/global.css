@@ -1,0 +1,20 @@
+@import "tailwindcss";
+@import "./brand.css";
+
+:root { 
+  --tw-ring-color: hsla(207 86% 60% / 0.38); 
+}
+
+html { 
+  scroll-behavior: smooth; 
+}
+
+body {
+  font-family: 'Manrope', Inter, system-ui, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  color: hsl(220 22% 10%);
+  background: hsl(220 14% 96%);
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
