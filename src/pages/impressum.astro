@@ -9,7 +9,7 @@ const title = `Impressum – ${BRAND.name}`;
 const description = `Impressum und rechtliche Hinweise von ${BRAND.name}`;
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={description} showHomeNav={true}>
   <!-- Main Content -->
   <main class="py-16 md:py-24">
     <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
@@ -54,6 +54,15 @@ const description = `Impressum und rechtliche Hinweise von ${BRAND.name}`;
               <h3 class="text-xl font-semibold mb-2">Umsatzsteueridentifikationsnummer</h3>
               <p class="text-lg">207 215 206</p>
             </div>
+          </div>
+
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight mb-6 mt-12">Hinweis zu KI-generierten Bildern</h2>
+          
+          <div class="space-y-4">
+            <p class="text-lg">
+              Einige der auf dieser Website verwendeten Bilder wurden mithilfe von Künstlicher Intelligenz (KI) erstellt. 
+              Diese Bilder dienen ausschließlich illustrativen Zwecken und stellen keine realen Personen, Orte oder Situationen dar.
+            </p>
           </div>
         </div>
 
