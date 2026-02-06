@@ -32,5 +32,6 @@ jobs:
           server: ${{ secrets.FTP_ENDPOINT }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
           local-dir: ./dist/
-          server-dir: ${{ github.event_name == 'pull_request' && 'public_html/dev' || 'public_html/live' }}
+          server-dir: ${{ github.event_name == 'pull_request' && 'dev/' || 'live/' }}
