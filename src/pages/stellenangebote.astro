@@ -1,13 +1,17 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { Briefcase, Mail, Phone, MapPin, CircleCheck, Clock, Shield, ArrowRight } from "@lucide/astro";
+import { Briefcase, Mail, Phone, CircleCheck, Clock, Shield, ArrowRight, MessageCircle, Smartphone } from "@lucide/astro";
 
 const BRAND = {
   name: "EMSIG Gebäudedienste GmbH",
   email: "info@emsig-gd.de",
   phone: "+49 4621 930245",
-  address: "Husumer Baum 36, 24837 Schleswig",
+  mobile: "+49 157 30676432",
 };
+
+const mobileDigits = BRAND.mobile.replace(/\D/g, "");
+const whatsappHref = `https://wa.me/${mobileDigits}`;
+const mobileTelHref = `tel:+${mobileDigits}`;
 
 const title = `Stellenangebote – ${BRAND.name}`;
 const description = `Karriere bei ${BRAND.name}: Jobs in der Gebäudereinigung in Schleswig-Holstein. Bewirb dich jetzt – faire Bezahlung, festes Team, geprüfter Arbeitgeber.`;
@@ -16,14 +20,14 @@ const benefits = [
   "Faire Vergütung und pünktliche Auszahlung",
   "Einarbeitung durch erfahrene Kolleg:innen",
   "Geprüftes, freundliches Team",
-  "Einsatz in Schleswig-Holstein (u. a. Schleswig, Kiel, Umgebung)",
+  "Einsatz in Schleswig-Holstein, vor allem in der Region Schleswig, Kreis Schleswig-Flensburg, Flensburg, übriges nördliches Schleswig-Holstein",
 ];
 
 const openings = [
   {
     title: "Reinigungskraft (m/w/d)",
-    type: "Ab Ende April 2026 · täglich Mo–Sa",
-    text: "Unterhaltsreinigung für ein Objekt in Satrup: Einsatz von Ende April 2026, täglich montags bis samstags, jeweils 2 Stunden – entweder um 06:00 Uhr oder ab 20:00 Uhr (nach Absprache). Zuverlässigkeit und Sorgfalt sind uns wichtiger als lange Berufserfahrung – wir bringen dir alles bei.",
+    type: "Ab Ende April 2026 bis Ende Oktober 2026 · täglich Mo–Sa",
+    text: "Unterhaltsreinigung für ein Objekt in Mittelangeln (Satrup) ab Ende April 2026 bis Oktober 2026, täglich montags bis samstags, jeweils 2 Stunden – entweder um 06:00 Uhr oder ab 20:00 Uhr (nach Absprache). Zuverlässigkeit und Sorgfalt sind uns wichtiger als lange Berufserfahrung – wir bringen dir alles bei. Ansprechpartner Michael Lapzien.",
   },
 ];
 ---
@@ -94,7 +98,7 @@ const openings = [
             <p class="text-blue-100 mb-6 max-w-2xl">
               Schick uns kurz deine Kontaktdaten und ob du Teilzeit oder Vollzeit anstrebst. Ein Lebenslauf im Anhang hilft uns – für ein erstes Gespräch ist er aber nicht zwingend.
             </p>
-            <div class="flex flex-col sm:flex-row flex-wrap gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl">
               <a
                 href={`mailto:${BRAND.email}?subject=Bewerbung%20${encodeURIComponent(BRAND.name)}`}
                 class="inline-flex items-center justify-center gap-2 rounded-lg bg-white px-6 py-3 text-primary font-bold hover:bg-gray-100 transition-colors"
@@ -109,16 +113,25 @@ const openings = [
                 <Phone class="h-5 w-5" />
                 {BRAND.phone}
               </a>
-            </div>
-          </div>
-        </section>
-
-        <section class="flex flex-col sm:flex-row gap-6 text-text-sub-light text-sm border-t border-gray-200 pt-8">
-          <div class="flex items-start gap-3">
-            <MapPin class="h-5 w-5 text-primary shrink-0" />
-            <div>
-              <p class="font-semibold text-text-main-light">Einsatz &amp; Büro</p>
-              <p>{BRAND.address}</p>
+              <a
+                href={mobileTelHref}
+                class="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-white px-6 py-3 font-bold text-white hover:bg-white/10 transition-colors"
+              >
+                <Smartphone class="h-5 w-5" />
+                Mobil {BRAND.mobile}
+              </a>
+              <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 rounded-lg bg-[#25D366] px-6 py-3 font-bold text-white hover:bg-[#20bd5a] transition-colors text-center"
+              >
+                <span class="inline-flex items-center gap-2">
+                  <MessageCircle class="h-5 w-5 shrink-0" />
+                  WhatsApp
+                </span>
+                <span class="text-sm font-semibold opacity-95">{BRAND.mobile}</span>
+              </a>
             </div>
           </div>
         </section>
