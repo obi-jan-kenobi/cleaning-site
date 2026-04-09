@@ -24,14 +24,13 @@ export const BRAND_AREA = "Schleswig-Holstein";
 
 /** Einheitliches Einsatzgebiet – wie Büroreinigung, inkl. Westküste */
 export const SERVICE_AREAS: string[] = [
-  "Schleswig & Kreis Schleswig-Flensburg",
+  "Schleswig",
+  "Kreis Schleswig-Flensburg",
   "Flensburg & Grenzregion",
   "Kiel & Umgebung (Kieler Bucht)",
-  "Neumünster & Mittelzentren",
-  "Dithmarschen & Westküste",
   "Nordfriesland",
-  "Lübeck & Lübecker Bucht",
-  "Pinneberg / Norderstedt (nördlicher Großraum)",
+  "Husum",
+  "übriges nördliches Schleswig-Holstein",
 ];
 
 export const serviceLandings: Record<string, ServiceLandingEntry> = {
