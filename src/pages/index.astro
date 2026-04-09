@@ -9,7 +9,6 @@ import {
 } from '@lucide/astro';
 import map from "../images/map.png";
 import teamImg from "../images/team.png";
-import cleaningImg from "../images/cleaning.png";
 import kitchenImg from "../images/kitchen.png";
 import officeImg from "../images/office.png";
 import solarImg from "../images/solar.png";
@@ -76,13 +75,43 @@ const jsonLd = {
   ]
 };
 
-const services = [
-  { title: "Unterhaltsreinigung", icon: "building", desc: "Regelmäßig oder einmalig – Büros, Verwaltung, Gewerberäume, Praxen, Küchen und mehr." },
-  { title: "Fenster & Glas", icon: "window", desc: "Streifenfrei innen & außen, inkl. Rahmen." },
+const services: {
+  title: string;
+  icon: string;
+  desc: string;
+  href?: string;
+}[] = [
+  {
+    title: "Büro- & Unterhaltsreinigung",
+    icon: "building",
+    desc: "Regelmäßig oder einmalig – Büros, Verwaltung, Gewerberäume, Praxen, Küchen und mehr.",
+    href: "/leistungen/bueroreinigung",
+  },
+  {
+    title: "Fenster & Glas",
+    icon: "window",
+    desc: "Streifenfrei innen & außen, inkl. Rahmen.",
+    href: "/leistungen/glasreinigung",
+  },
   { title: "Grundreinigung", icon: "box", desc: "Intensivreinigung inkl. Kühlschrank, Backofen & Fenster." },
-  { title: "Fassadenreinigung", icon: "apartment", desc: "Professionelle Reinigung von Hausfassaden & Außenwänden." },
-  { title: "Baureinigung", icon: "hardhat", desc: "Grob- und Feinreinigung nach Renovierung/Neubau." },
-  { title: "PV-Reinigung", icon: "sun", desc: "Schonende Reinigung Ihrer Photovoltaik-Module." },
+  {
+    title: "Fassadenreinigung",
+    icon: "apartment",
+    desc: "Professionelle Reinigung von Hausfassaden & Außenwänden.",
+    href: "/leistungen/fassadenreinigung",
+  },
+  {
+    title: "Baureinigung",
+    icon: "hardhat",
+    desc: "Grob- und Feinreinigung nach Renovierung/Neubau.",
+    href: "/leistungen/baureinigung",
+  },
+  {
+    title: "PV-Reinigung",
+    icon: "sun",
+    desc: "Schonende Reinigung Ihrer Photovoltaik-Module.",
+    href: "/leistungen/pv-reinigung",
+  },
   { title: "Gartenpflege", icon: "trees", desc: "Rasen, Hecken, Beete – regelmäßig oder einmalig." },
   { title: "Winterdienst", icon: "snowflake", desc: "Schneeräumen & Streuen nach Satzung." },
 ];
@@ -257,9 +286,22 @@ const faqs = [
                 <h4 class="text-lg font-bold text-text-main-light">{service.title}</h4>
               </div>
               <p class="text-text-sub-light text-sm leading-relaxed mb-5 flex-1">{service.desc}</p>
-              <a href="#contact" class="w-full py-2.5 rounded-lg border border-primary/20 hover:border-primary hover:bg-primary/5 text-primary font-bold text-sm transition-colors flex items-center justify-center gap-2">
+              <div class="flex flex-col gap-2">
+                {service.href ? (
+                  <a
+                    href={service.href}
+                    class="w-full py-2.5 rounded-lg border border-primary/30 hover:border-primary hover:bg-primary/5 text-primary font-bold text-sm transition-colors flex items-center justify-center gap-2"
+                  >
+                    Mehr erfahren
+                  </a>
+                ) : null}
+                <a
+                  href="#contact"
+                  class="w-full py-2.5 rounded-lg border border-primary/20 hover:border-primary hover:bg-primary/5 text-primary font-bold text-sm transition-colors flex items-center justify-center gap-2"
+                >
                   Angebot anfragen
                 </a>
+              </div>
               </div>
           </div>
         )})}

@@ -173,9 +173,9 @@ const BRAND = {
           <div>
             <h3 class="text-text-main-light font-bold mb-4">Unternehmen</h3>
             <ul class="flex flex-col gap-2 text-sm text-text-sub-light">
-              <li><a class="hover:text-primary transition-colors" href="#about">Über uns</a></li>
+              <li><a class="hover:text-primary transition-colors" href="/#about">Über uns</a></li>
               <li><a class="hover:text-primary transition-colors" href={BRAND.jobs}>Stellenangebote</a></li>
-              <li><a class="hover:text-primary transition-colors" href="#contact">Kontakt</a></li>
+              <li><a class="hover:text-primary transition-colors" href="/#contact">Kontakt</a></li>
               <li><a class="hover:text-primary transition-colors" href={BRAND.legal.impressum}>Impressum</a></li>
               <li><a class="hover:text-primary transition-colors" href={BRAND.legal.datenschutz}>Datenschutz</a></li>
             </ul>
@@ -185,10 +185,12 @@ const BRAND = {
           <div>
             <h3 class="text-text-main-light font-bold mb-4">Services</h3>
             <ul class="flex flex-col gap-2 text-sm text-text-sub-light">
-              <li><a class="hover:text-primary transition-colors" href="#services">Unterhaltsreinigung</a></li>
-              <li><a class="hover:text-primary transition-colors" href="#services">Fassadenreinigung</a></li>
-              <li><a class="hover:text-primary transition-colors" href="#services">Glasreinigung</a></li>
-              <li><a class="hover:text-primary transition-colors" href="#services">Baureinigung</a></li>
+              <li><a class="hover:text-primary transition-colors" href="/leistungen/bueroreinigung">Büroreinigung</a></li>
+              <li><a class="hover:text-primary transition-colors" href="/leistungen/glasreinigung">Glasreinigung</a></li>
+              <li><a class="hover:text-primary transition-colors" href="/leistungen/fassadenreinigung">Fassadenreinigung</a></li>
+              <li><a class="hover:text-primary transition-colors" href="/leistungen/baureinigung">Baureinigung</a></li>
+              <li><a class="hover:text-primary transition-colors" href="/leistungen/pv-reinigung">PV-Reinigung</a></li>
+              <li><a class="hover:text-primary transition-colors" href="/#services">Alle Services</a></li>
             </ul>
           </div>
           
@@ -223,7 +225,7 @@ const BRAND = {
     
     <!-- Floating Contact Button -->
     <div class="fixed bottom-6 right-6 z-40">
-      <a href="#contact" class="w-14 h-14 rounded-full bg-primary text-white shadow-lg hover:scale-110 transition-transform flex items-center justify-center">
+      <a href="/#contact" class="w-14 h-14 rounded-full bg-primary text-white shadow-lg hover:scale-110 transition-transform flex items-center justify-center">
         <MessageCircle class="h-7 w-7" />
       </a>
     </div>

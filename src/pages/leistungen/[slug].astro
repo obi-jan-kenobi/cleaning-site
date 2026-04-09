@@ -1,0 +1,248 @@
+---
+import { Picture } from "astro:assets";
+import Layout from "../../layouts/Layout.astro";
+import {
+  serviceLandings,
+  serviceLandingSlugs,
+  BRAND_AREA,
+  type ServiceImageKey,
+} from "../../data/serviceLandings";
+import {
+  CircleCheck,
+  MapPin,
+  Phone,
+  ArrowRight,
+  HelpCircle,
+  Mail,
+} from "@lucide/astro";
+
+import constructionImg from "../../images/construction.png";
+import facadeImg from "../../images/facade.png";
+import officeFurnitureImg from "../../images/office_furniture.png";
+import officeImg from "../../images/office.png";
+import windowImg from "../../images/window.png";
+import solarImg from "../../images/solar.png";
+import teamImg from "../../images/team.png";
+import mapImg from "../../images/map.png";
+
+const imageByKey: Record<ServiceImageKey, typeof officeImg> = {
+  construction: constructionImg,
+  facade: facadeImg,
+  office_furniture: officeFurnitureImg,
+  office: officeImg,
+  window: windowImg,
+  solar: solarImg,
+  team: teamImg,
+  map: mapImg,
+};
+
+export function getStaticPaths() {
+  return serviceLandingSlugs.map((slug) => ({
+    params: { slug },
+    props: { entry: serviceLandings[slug] },
+  }));
+}
+
+const { entry } = Astro.props;
+const heroImage = imageByKey[entry.imageKey];
+
+const BRAND = {
+  name: "EMSIG Gebäudedienste GmbH",
+  phone: "+49 4621 930245",
+  email: "info@emsig-gd.de",
+  address: "Husumer Baum 36, 24837 Schleswig",
+};
+
+const contactHref = `/#contact`;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: entry.jsonLdServiceName,
+  provider: {
+    "@type": "LocalBusiness",
+    name: BRAND.name,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: BRAND.address,
+      addressLocality: "Schleswig",
+      addressRegion: "SH",
+      postalCode: "24837",
+      addressCountry: "DE",
+    },
+    telephone: BRAND.phone,
+    areaServed: entry.areas.map((a) => ({ "@type": "City", name: a.split("–")[0].trim() })),
+  },
+  areaServed: { "@type": "AdministrativeArea", name: BRAND_AREA },
+  description: entry.description,
+  url: new URL(`/leistungen/${entry.slug}`, "https://emsig.sh/").href,
+};
+---
+
+<Layout title={entry.title} description={entry.description} jsonLd={jsonLd}>
+  <section class="relative w-full py-12 md:py-16 bg-gradient-to-br from-blue-50 to-white border-b border-gray-100">
+    <div class="max-w-[1280px] mx-auto px-4 md:px-10">
+      <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+        <div class="max-w-2xl order-2 lg:order-1">
+          <div
+            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wide mb-4"
+          >
+            {entry.badge}
+          </div>
+          <h1 class="text-3xl md:text-4xl lg:text-[2.5rem] font-bold tracking-tight text-text-main-light mb-4">
+            {entry.h1}
+          </h1>
+          <p class="text-lg text-text-sub-light leading-relaxed mb-6">
+            {entry.lead}
+          </p>
+          <div class="flex flex-col sm:flex-row flex-wrap gap-3">
+            <a
+              href={contactHref}
+              class="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3.5 text-white font-bold hover:bg-primary-hover transition-colors shadow-lg shadow-blue-500/25"
+            >
+              Angebot anfragen
+              <ArrowRight class="h-5 w-5" />
+            </a>
+            <a
+              href={`tel:${BRAND.phone.replace(/\s/g, "")}`}
+              class="inline-flex items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-6 py-3.5 font-medium text-text-main-light hover:bg-gray-50 transition-colors"
+            >
+              <Phone class="h-5 w-5" />
+              {BRAND.phone}
+            </a>
+          </div>
+        </div>
+        <div class="order-1 lg:order-2">
+          <div class="aspect-[4/3] w-full rounded-2xl overflow-hidden shadow-xl bg-gray-200">
+            <Picture
+              src={heroImage}
+              alt={entry.imageAlt}
+              formats={["avif", "webp"]}
+              class="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="py-12 md:py-20">
+    <div class="max-w-[1280px] mx-auto px-4 md:px-10">
+      <div class="grid gap-12 lg:grid-cols-3">
+        <div class="lg:col-span-2 space-y-12">
+          <section class="rounded-2xl bg-white border border-gray-100 shadow-sm p-6 md:p-8">
+            <h2 class="text-xl font-bold text-text-main-light mb-6">Das können Sie erwarten</h2>
+            <ul class="space-y-3">
+              {
+                entry.highlights.map((line) => (
+                  <li class="flex items-start gap-3 text-text-sub-light">
+                    <CircleCheck class="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                    <span>{line}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </section>
+
+          <section>
+            <h2 class="text-xl font-bold text-text-main-light mb-3">Regional in {BRAND_AREA}</h2>
+            <p class="text-text-sub-light leading-relaxed mb-6">{entry.localIntro}</p>
+            <div class="grid sm:grid-cols-2 gap-3">
+              {
+                entry.areas.map((area) => (
+                  <div class="flex items-start gap-2 rounded-xl border border-gray-100 bg-surface-light px-4 py-3 text-sm text-text-sub-light">
+                    <MapPin class="h-4 w-4 text-primary shrink-0 mt-0.5" />
+                    <span>{area}</span>
+                  </div>
+                ))
+              }
+            </div>
+          </section>
+
+          <section>
+            <h2 class="text-xl font-bold text-text-main-light mb-6">Typische Einsätze</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+              {
+                entry.scenarios.map((s) => (
+                  <article class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+                    <h3 class="text-lg font-bold text-text-main-light mb-2">{s.title}</h3>
+                    <p class="text-text-sub-light text-sm leading-relaxed">{s.text}</p>
+                  </article>
+                ))
+              }
+            </div>
+          </section>
+
+          <section class="rounded-2xl bg-blue-50/50 border border-gray-100 p-6 md:p-8">
+            <h2 class="text-xl font-bold text-text-main-light mb-6 flex items-center gap-2">
+              <HelpCircle class="h-6 w-6 text-primary" />
+              Häufige Fragen
+            </h2>
+            <div class="space-y-6">
+              {
+                entry.faqs.map((faq) => (
+                  <div>
+                    <h3 class="font-semibold text-text-main-light">{faq.q}</h3>
+                    <p class="mt-2 text-text-sub-light text-sm leading-relaxed">{faq.a}</p>
+                  </div>
+                ))
+              }
+            </div>
+          </section>
+        </div>
+
+        <aside class="lg:col-span-1">
+          <div class="sticky top-24 space-y-6">
+            <div class="rounded-2xl bg-primary text-white p-6 md:p-8 relative overflow-hidden">
+              <div
+                class="absolute inset-0 opacity-10"
+                style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 24px 24px;"
+              >
+              </div>
+              <div class="relative z-10">
+                <p class="text-blue-100 text-sm font-medium mb-2">Direkt aus Schleswig</p>
+                <p class="text-lg font-bold mb-4">Kostenloses Angebot für {entry.jsonLdServiceName}</p>
+                <p class="text-blue-100 text-sm mb-6">
+                  Nennen Sie uns Ort und Objekt – wir melden uns mit Terminvorschlägen in {BRAND_AREA}.
+                </p>
+                <a
+                  href={contactHref}
+                  class="flex w-full items-center justify-center gap-2 rounded-lg bg-white px-4 py-3 text-primary font-bold hover:bg-gray-100 transition-colors"
+                >
+                  Zum Kontaktformular
+                  <ArrowRight class="h-4 w-4" />
+                </a>
+              </div>
+            </div>
+
+            <div class="rounded-2xl border border-gray-200 bg-white p-6 text-sm text-text-sub-light">
+              <p class="font-semibold text-text-main-light mb-3">Kontakt</p>
+              <a
+                href={`tel:${BRAND.phone.replace(/\s/g, "")}`}
+                class="flex items-center gap-2 hover:text-primary mb-2"
+              >
+                <Phone class="h-4 w-4" />
+                {BRAND.phone}
+              </a>
+              <a href={`mailto:${BRAND.email}`} class="flex items-center gap-2 hover:text-primary mb-4">
+                <Mail class="h-4 w-4" />
+                {BRAND.email}
+              </a>
+              <p class="flex items-start gap-2">
+                <MapPin class="h-4 w-4 shrink-0 mt-0.5" />
+                {BRAND.address}
+              </p>
+            </div>
+
+            <p>
+              <a href="/" class="text-primary hover:text-primary-hover font-medium inline-flex items-center gap-1">
+                <ArrowRight class="h-4 w-4 rotate-180" />
+                Zurück zur Startseite
+              </a>
+            </p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+</Layout>

@@ -1,5 +1,4 @@
 ---
-import { Circle } from "lucide";
 import Layout from "../layouts/Layout.astro";
 import { Briefcase, Mail, Phone, MapPin, CircleCheck, Clock, Shield, ArrowRight } from "@lucide/astro";
 
@@ -11,7 +10,7 @@ const BRAND = {
 };
 
 const title = `Stellenangebote – ${BRAND.name}`;
-const description = `Karriere bei ${BRAND.name}: Jobs in der Gebäudereinigung in Schleswig-Holstein. Bewerben Sie sich jetzt – faire Bezahlung, festes Team, geprüfter Arbeitgeber.`;
+const description = `Karriere bei ${BRAND.name}: Jobs in der Gebäudereinigung in Schleswig-Holstein. Bewirb dich jetzt – faire Bezahlung, festes Team, geprüfter Arbeitgeber.`;
 
 const benefits = [
   "Faire Vergütung und pünktliche Auszahlung",
@@ -23,14 +22,9 @@ const benefits = [
 const openings = [
   {
     title: "Reinigungskraft (m/w/d)",
-    type: "Teilzeit / Vollzeit",
-    text: "Unterhaltsreinigung in Büros, Praxen und Privathaushalten. Zuverlässigkeit und Sorgfalt sind uns wichtiger als lange Berufserfahrung – wir bringen Ihnen alles bei.",
+    type: "Ab Ende April 2026 · täglich Mo–Sa",
+    text: "Unterhaltsreinigung für ein Objekt in Satrup: Einsatz von Ende April 2026, täglich montags bis samstags, jeweils 2 Stunden – entweder um 06:00 Uhr oder ab 20:00 Uhr (nach Absprache). Zuverlässigkeit und Sorgfalt sind uns wichtiger als lange Berufserfahrung – wir bringen dir alles bei.",
   },
-//  {
-//    title: "Objektleitung / Teamleitung (m/w/d)",
-//    type: "Nach Vereinbarung",
-//    text: "Koordination der Einsätze, Qualitätssicherung und Ansprechpartner:in für Kund:innen. Erfahrung in der Reinigungsbranche oder vergleichbare Führungserfahrung von Vorteil.",
-//  },
 ];
 ---
 
@@ -44,7 +38,7 @@ const openings = [
         </div>
         <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-text-main-light mb-4">Stellenangebote</h1>
         <p class="text-lg text-text-sub-light leading-relaxed">
-          Werden Sie Teil eines freundlichen Teams. Bei {BRAND.name} zählen Zuverlässigkeit, Respekt und saubere Arbeit – bei fairen Konditionen.
+          Werde Teil eines freundlichen Teams. Bei {BRAND.name} zählen Zuverlässigkeit, Respekt und saubere Arbeit – bei fairen Konditionen.
         </p>
       </div>
     </div>
@@ -54,7 +48,7 @@ const openings = [
     <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
       <div class="grid gap-10 md:gap-14">
         <section class="rounded-2xl bg-white border border-gray-100 shadow-sm p-6 md:p-8">
-          <h2 class="text-xl font-bold text-text-main-light mb-4">Das bieten wir</h2>
+          <h2 class="text-xl font-bold text-text-main-light mb-4">Das bieten wir dir</h2>
           <ul class="space-y-3">
             {benefits.map((line) => (
               <li class="flex items-start gap-3 text-text-sub-light">
@@ -89,16 +83,16 @@ const openings = [
             ))}
           </div>
           <p class="mt-6 text-text-sub-light text-sm">
-            Kein passendes Profil dabei? Initiativbewerbungen sind ausdrücklich willkommen – wir melden uns, sobald eine Stelle passt.
+            Kein passendes Profil dabei? Initiativbewerbungen sind ausdrücklich willkommen – wir melden uns bei dir, sobald eine Stelle passt.
           </p>
         </section>
 
         <section class="rounded-2xl bg-primary text-white p-6 md:p-8 relative overflow-hidden">
           <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 24px 24px;"></div>
           <div class="relative z-10">
-            <h2 class="text-xl font-bold mb-2">So bewerben Sie sich</h2>
+            <h2 class="text-xl font-bold mb-2">So bewirbst du dich</h2>
             <p class="text-blue-100 mb-6 max-w-2xl">
-              Senden Sie uns kurz Ihre Kontaktdaten und ob Sie Teilzeit oder Vollzeit anstreben. Ein Lebenslauf im Anhang hilft uns – ist aber nicht zwingend für ein erstes Gespräch.
+              Schick uns kurz deine Kontaktdaten und ob du Teilzeit oder Vollzeit anstrebst. Ein Lebenslauf im Anhang hilft uns – für ein erstes Gespräch ist er aber nicht zwingend.
             </p>
             <div class="flex flex-col sm:flex-row flex-wrap gap-4">
               <a
@@ -106,7 +100,7 @@ const openings = [
                 class="inline-flex items-center justify-center gap-2 rounded-lg bg-white px-6 py-3 text-primary font-bold hover:bg-gray-100 transition-colors"
               >
                 <Mail class="h-5 w-5" />
-                Per E-Mail bewerben
+                Bewirb dich per E-Mail
               </a>
               <a
                 href={`tel:${BRAND.phone.replace(/\s/g, "")}`}
@@ -131,7 +125,7 @@ const openings = [
 
         <div>
           <a href="/#contact" class="inline-flex items-center gap-2 text-primary hover:text-primary-hover font-medium">
-            Oder Kontaktformular auf der Startseite
+            Oder nutze das Kontaktformular auf der Startseite
             <ArrowRight class="h-4 w-4" />
           </a>
           <p class="mt-4">
