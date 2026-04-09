@@ -4,12 +4,11 @@ import { Picture } from 'astro:assets';
 import { 
   BadgeCheck, ArrowRight, Phone, CircleCheck, ChevronLeft, ChevronRight, 
   Smile, Star, ShieldCheck, Leaf, Clock, Building2, AppWindow, Box, 
-  Building, HardHat, Sun, Trees, Snowflake, Quote, HelpCircle, MapPin, 
+  Building, HardHat, Sun, Trees, Snowflake, MessageCircleQuestionMark, MapPin, Grid2x2,
   ChevronDown, Send, Mail, PawPrint 
 } from '@lucide/astro';
 import map from "../images/map.png";
 import teamImg from "../images/team.png";
-import cleaningImg from "../images/cleaning.png";
 import kitchenImg from "../images/kitchen.png";
 import officeImg from "../images/office.png";
 import solarImg from "../images/solar.png";
@@ -89,7 +88,7 @@ const services = [
 
 const iconMap: Record<string, any> = {
   building: Building2,
-  window: AppWindow,
+  window: Grid2x2,
   box: Box,
   apartment: Building,
   hardhat: HardHat,
@@ -362,7 +361,7 @@ const faqs = [
         {faqs.map((faq) => (
           <div class="rounded-2xl bg-white p-6 shadow-sm border border-gray-100" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
             <h3 class="text-lg font-semibold text-text-main-light flex items-start gap-3" itemprop="name">
-              <HelpCircle class="h-6 w-6 text-primary mt-0.5 shrink-0" />
+              <MessageCircleQuestionMark class="h-6 w-6 text-primary mt-0.5 shrink-0" />
               {faq.q}
             </h3>
             <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
@@ -418,7 +417,7 @@ const faqs = [
               </div>
             </div>
           </div>
-          <p class="text-xs text-text-sub-light mt-4">Durchschnittliche Antwortzeit <strong>&lt; 60 Min.</strong> (Mo–Fr, 8–18 Uhr).</p>
+          <p class="text-xs text-text-sub-light mt-4">Durchschnittliche Antwortzeit <strong>&lt; 120 Min.</strong> (Mo–Fr, 8–18 Uhr).</p>
         </div>
         <div class="lg:w-7/12 w-full bg-white rounded-3xl p-6 md:p-10 shadow-xl shadow-blue-500/5 border border-gray-100">
           <form method="POST" action="https://app.formhive.net/submit/TXrsbVtxGNdNLzQ" class="grid grid-cols-1 md:grid-cols-2 gap-6">
