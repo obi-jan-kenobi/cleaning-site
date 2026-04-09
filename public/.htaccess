@@ -1,0 +1,18 @@
+# Long cache for Astro build output (content-hashed filenames; safe after deploy).
+# Requires Apache with mod_headers (and for <If>, Apache 2.4+).
+<IfModule mod_headers.c>
+  <If "%{REQUEST_URI} =~ m#^/_astro/#">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </If>
+</IfModule>
+
+# Gzip/deflate text-based responses (requires mod_deflate; often with mod_filter on 2.4).
+<IfModule mod_deflate.c>
+  SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|jpe|png|webp|avif|ico|woff2?|mp3|mp4|mpe?g|zip|gz|bz2)$ no-gzip dont-vary
+
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+  AddOutputFilterByType DEFLATE text/javascript application/javascript application/json
+  AddOutputFilterByType DEFLATE application/xml application/xhtml+xml application/rss+xml application/atom+xml
+  AddOutputFilterByType DEFLATE image/svg+xml
+  AddOutputFilterByType DEFLATE font/ttf font/otf font/woff application/font-woff application/vnd.ms-fontobject
+</IfModule>
