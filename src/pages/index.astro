@@ -31,6 +31,12 @@ const BRAND = {
   address: "Husumer Baum 36, 24837 Schleswig",
 };
 
+const regions = [
+  { name: "Schleswig", href: "/regionen/schleswig" },
+  { name: "Flensburg", href: "/regionen/flensburg" },
+  { name: "Kiel", href: "/regionen/kiel" },
+];
+
 const title = `${BRAND.name} – ${BRAND.tagline}`;
 const description = `${BRAND.name}: Unterhalts-, Büro-, Glas-, PV- & Baureinigung in ${BRAND.area}. Schnelle Terminvergabe, versichert & zuverlässig.`;
 
@@ -354,6 +360,17 @@ const faqs = [
             <p class="mt-4 text-center text-sm text-text-sub-light">
               Unser Einsatzgebiet: {BRAND.area} (Kiel, Lübeck, Flensburg, Neumünster, u.v.m.)
             </p>
+            <div class="mt-4 flex flex-wrap justify-center gap-2">
+              {regions.map((region) => (
+                <a
+                  href={region.href}
+                  class="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-white px-3 py-1.5 text-sm font-medium text-primary hover:border-primary hover:bg-primary/5 transition-colors"
+                >
+                  <MapPin class="h-4 w-4" />
+                  {region.name}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>
