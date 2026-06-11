@@ -39,7 +39,7 @@ export const serviceLandings: Record<string, ServiceLandingEntry> = {
     formServiceValue: "Unterhaltsreinigung",
     title: `Büroreinigung & Gewerbereinigung in ${BRAND_AREA} | EMSIG`,
     description:
-      "Professionelle Büroreinigung in Schleswig-Holstein: Kiel, Lübeck, Flensburg, Schleswig und Umgebung. Verlässliche Termine, versichertes Personal, diskrete Arbeitsweise.",
+      "Professionelle Büroreinigung in Schleswig-Holstein: Schleswig, Flensburg,  Kiel, Lübeck und Umgebung. Verlässliche Termine, versichertes Personal, diskrete Arbeitsweise.",
     badge: "Büro & Gewerbe",
     h1: "Büroreinigung in Schleswig-Holstein",
     lead:
@@ -139,7 +139,7 @@ export const serviceLandings: Record<string, ServiceLandingEntry> = {
       "Abtransport von leichten Reststoffen nach Vereinbarung",
     ],
     localIntro:
-      "Ob Neubauviertel in der Kieler Außenstadt oder Sanierung in historischer Bausubstanz in Lübeck: Wir kennen typische Objekte in der Region und arbeiten effizient mit örtlichen Gewerken zusammen.",
+      "Ob Neubauviertel in der Kieler Außenstadt oder Sanierung in historischer Bausubstanz in Flensburg: Wir kennen typische Objekte in der Region und arbeiten effizient mit örtlichen Gewerken zusammen.",
     areas: [...SERVICE_AREAS],
     scenarios: [
       {

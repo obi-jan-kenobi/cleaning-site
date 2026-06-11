@@ -21,6 +21,12 @@ const BRAND = {
   legal: { impressum: "/impressum", datenschutz: "/datenschutz" },
   jobs: "/stellenangebote",
 };
+
+const regions = [
+  { name: "Schleswig", href: "/regionen/schleswig" },
+  { name: "Flensburg", href: "/regionen/flensburg" },
+  { name: "Kiel", href: "/regionen/kiel" },
+];
 ---
 
 <html lang="de">
@@ -57,6 +63,7 @@ const BRAND = {
           <nav class="flex items-center gap-9">
             <a class="text-text-main-light text-sm font-medium hover:text-primary transition-colors" href="/">Start</a>
             <a class="text-text-main-light text-sm font-medium hover:text-primary transition-colors" href="/#services">Services</a>
+            <a class="text-text-main-light text-sm font-medium hover:text-primary transition-colors" href="/regionen">Regionen</a>
             <a class="text-text-main-light text-sm font-medium hover:text-primary transition-colors" href="/#about">Über uns</a>
             <a class="text-text-main-light text-sm font-medium hover:text-primary transition-colors" href={BRAND.jobs}>Stellenangebote</a>
             <!-- <a class="text-text-main-light text-sm font-medium hover:text-primary transition-colors" href="/#reviews">Bewertungen</a> -->
@@ -89,6 +96,7 @@ const BRAND = {
       <div class="flex flex-col p-4">
         <a class="py-3 text-text-main-light font-medium hover:text-primary transition-colors border-b border-gray-100" href="/">Start</a>
         <a class="py-3 text-text-main-light font-medium hover:text-primary transition-colors border-b border-gray-100" href="/#services">Services</a>
+        <a class="py-3 text-text-main-light font-medium hover:text-primary transition-colors border-b border-gray-100" href="/regionen">Regionen</a>
         <a class="py-3 text-text-main-light font-medium hover:text-primary transition-colors border-b border-gray-100" href="/#about">Über uns</a>
         <a class="py-3 text-text-main-light font-medium hover:text-primary transition-colors border-b border-gray-100" href={BRAND.jobs}>Stellenangebote</a>
         <a class="py-3 text-text-main-light font-medium hover:text-primary transition-colors border-b border-gray-100" href="/#contact">Kontakt</a>
@@ -149,9 +157,9 @@ const BRAND = {
     <!-- Footer -->
     <footer class="bg-surface-light border-t border-gray-200 pt-16 pb-8">
       <div class="max-w-[1280px] mx-auto px-4 md:px-10">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10 mb-12">
           <!-- Brand -->
-          <div class="flex flex-col gap-4">
+          <div class="flex flex-col gap-4 lg:col-span-2">
             <a href="/" class="flex items-center gap-2 text-primary">
               <div class="size-6 flex items-center justify-center rounded bg-primary/10">
                 <Logo class="h-4 w-4 text-primary" />
@@ -191,6 +199,19 @@ const BRAND = {
               <li><a class="hover:text-primary transition-colors" href="/leistungen/baureinigung">Baureinigung</a></li>
               <li><a class="hover:text-primary transition-colors" href="/leistungen/pv-reinigung">PV-Reinigung</a></li>
               <li><a class="hover:text-primary transition-colors" href="/#services">Alle Services</a></li>
+            </ul>
+          </div>
+
+          <!-- Regions -->
+          <div>
+            <h3 class="text-text-main-light font-bold mb-4">
+              <a class="hover:text-primary transition-colors" href="/regionen">Regionen</a>
+            </h3>
+            <ul class="flex flex-col gap-2 text-sm text-text-sub-light">
+              {regions.map((region) => (
+                <li><a class="hover:text-primary transition-colors" href={region.href}>{region.name}</a></li>
+              ))}
+              <li><a class="hover:text-primary transition-colors" href="/regionen">Alle Regionen</a></li>
             </ul>
           </div>
           
